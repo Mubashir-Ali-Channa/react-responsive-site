@@ -3,10 +3,10 @@ import { apiRequest } from "../lib/api";
 
 const ContactForm = () => {
   const [formData, setFormData] = useState({
-    name: "Alex Morgan",
-    email: "alex.morgan@email.com",
-    topic: "Feature request",
-    message: "Hi team, I would like to request a blog search feature.",
+    name: "",
+    email: "",
+    topic: "",
+    message: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [status, setStatus] = useState({ type: "", message: "" });
@@ -18,6 +18,15 @@ const ContactForm = () => {
 
   const onSubmit = async (event) => {
     event.preventDefault();
+    const trimmedMessage = formData.message.trim();
+    if (trimmedMessage.length < 10) {
+      setStatus({
+        type: "error",
+        message: "Message should be at least 10 characters.",
+      });
+      return;
+    }
+
     setIsSubmitting(true);
     setStatus({ type: "", message: "" });
 
@@ -27,10 +36,21 @@ const ContactForm = () => {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({
+          ...formData,
+          name: formData.name.trim(),
+          email: formData.email.trim(),
+          topic: formData.topic.trim(),
+          message: trimmedMessage,
+        }),
       });
       setStatus({ type: "success", message: "Message sent successfully." });
-      setFormData((prev) => ({ ...prev, message: "" }));
+      setFormData({
+        name: "",
+        email: "",
+        topic: "",
+        message: "",
+      });
     } catch (error) {
       setStatus({
         type: "error",
@@ -50,6 +70,7 @@ const ContactForm = () => {
         type="text"
         value={formData.name}
         onChange={onChange}
+        required
       />
 
       <label htmlFor="email">Email</label>
@@ -59,6 +80,7 @@ const ContactForm = () => {
         type="email"
         value={formData.email}
         onChange={onChange}
+        required
       />
 
       <label htmlFor="topic">Topic</label>
@@ -68,6 +90,7 @@ const ContactForm = () => {
         type="text"
         value={formData.topic}
         onChange={onChange}
+        required
       />
 
       <label htmlFor="message">Message</label>
@@ -77,6 +100,8 @@ const ContactForm = () => {
         rows="5"
         value={formData.message}
         onChange={onChange}
+        minLength={10}
+        required
       />
 
       <button type="submit" disabled={isSubmitting}>
