@@ -4,6 +4,7 @@ import Header from './Components/Header'
 import Body from './Components/Body'
 import Footer from './Components/Footer'
 import ProjectsPage from './Components/ProjectsPage'
+import BlogsPage from './Components/BlogsPage'
 import ContactPage from './Components/ContactPage'
 import SupportPage from './Components/SupportPage'
 import ServicesPage from './Components/ServicesPage'
@@ -22,7 +23,8 @@ function App() {
 
   const getPage = () => {
     if (currentPath === '/services') return <ServicesPage />
-    if (currentPath === '/projects' || currentPath === '/blogs') return <ProjectsPage />
+    if (currentPath === '/projects') return <ProjectsPage />
+    if (currentPath === '/blogs') return <BlogsPage />
     if (currentPath === '/contact') return <ContactPage />
     if (currentPath === '/support') return <SupportPage />
     return <Body />
