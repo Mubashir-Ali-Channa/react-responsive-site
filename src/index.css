@@ -1,14 +1,39 @@
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: "Poppins", "Segoe UI", "Avenir Next", "Helvetica Neue", Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
-  color: #0f172a;
-  background-color: #f1f5f9;
+  color: #ecf0f4;
+  background-color: #0a0c10;
+  --bg-page: #0a0c10;
+  --bg-surface: #12161b;
+  --bg-soft: #171d23;
+  --text-main: #ecf0f4;
+  --text-muted: #a4afb8;
+  --border: #242d35;
+  --brand: #3ddc3d;
+  --brand-strong: #27b527;
+  --accent: #8df78d;
+  --shadow: 0 14px 30px rgba(0, 0, 0, 0.35);
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+[data-theme="light"] {
+  color: #1b2028;
+  background-color: #f3f5f8;
+  --bg-page: #f3f5f8;
+  --bg-surface: #ffffff;
+  --bg-soft: #f0f3f7;
+  --text-main: #1b2028;
+  --text-muted: #5d6775;
+  --border: #d8e0e8;
+  --brand: #179a17;
+  --brand-strong: #0f7c0f;
+  --accent: #116411;
+  --shadow: 0 10px 24px rgba(15, 23, 42, 0.1);
 }
 
 a {
@@ -22,4 +47,6 @@ body {
   display: block;
   min-width: 320px;
   min-height: 100vh;
+  background: var(--bg-page);
+  color: var(--text-main);
 }

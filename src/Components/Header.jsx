@@ -1,10 +1,11 @@
 import { useState } from "react";
 import "./Header.css";
 
-const Header = () => {
+const Header = ({ theme, onToggleTheme }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const mainPageLink = "/";
-  const blogLink = "/blogs";
+  const aboutLink = "/";
+  const servicesLink = "/services";
+  const projectsLink = "/projects";
   const contactLink = "/contact";
   const supportLink = "/support";
 
@@ -13,7 +14,7 @@ const Header = () => {
   return (
     <header className="site-header">
       <div className="header-inner">
-        <h1 className="brand">My App</h1>
+        <h1 className="brand">My Portfolio</h1>
         <button
           className="menu-toggle"
           type="button"
@@ -28,10 +29,14 @@ const Header = () => {
         </button>
 
         <nav className={`header-nav ${isMenuOpen ? "is-open" : ""}`} id="primary-nav">
-          <a href={mainPageLink} onClick={closeMenu}>Home</a>
-          <a href={blogLink} onClick={closeMenu}>Blogs</a>
+          <a href={aboutLink} onClick={closeMenu}>About</a>
+          <a href={servicesLink} onClick={closeMenu}>Services</a>
+          <a href={projectsLink} onClick={closeMenu}>Projects</a>
           <a href={contactLink} onClick={closeMenu}>Contact</a>
           <a href={supportLink} onClick={closeMenu}>Support</a>
+          <button type="button" className="theme-toggle" onClick={onToggleTheme}>
+            {theme === "dark" ? "Light" : "Dark"} mode
+          </button>
         </nav>
       </div>
     </header>

@@ -1,22 +1,22 @@
 const fakePosts = [
   {
     id: 1,
-    title: "Design Sprint Notes",
-    description: "Quick updates from this week's planning and UI review.",
+    title: "Business Landing Page",
+    description: "A high-conversion landing page with responsive layout and SEO basics.",
     image:
       "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1200&q=80",
   },
   {
     id: 2,
-    title: "Product Roadmap",
-    description: "Milestones, releases, and key improvements for the quarter.",
+    title: "Dashboard UI Build",
+    description: "A reusable component-based dashboard with charts and action flows.",
     image:
       "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=1200&q=80",
   },
   {
     id: 3,
-    title: "Team Highlights",
-    description: "A snapshot of contributions and wins from the last sprint.",
+    title: "E-commerce Frontend",
+    description: "A storefront interface with product filters, detail pages, and cart UX.",
     image:
       "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1200&q=80",
   },
@@ -24,7 +24,10 @@ const fakePosts = [
 
 const FeatureCards = () => {
   return (
-    <section className="card-grid">
+    <section className="featured-work">
+      <p className="eyebrow">Featured Work</p>
+      <h2>Recent projects</h2>
+      <div className="card-grid">
       {fakePosts.map((post) => (
         <article className="content-card" key={post.id}>
           <img src={post.image} alt={post.title} />
@@ -34,6 +37,7 @@ const FeatureCards = () => {
           </div>
         </article>
       ))}
+      </div>
     </section>
   );
 };
